@@ -1,5 +1,5 @@
 const crypto = require('crypto');
-const HTTP_CODE_UNAUTHORIZED = 401;
+const HttpStatus = require('http-status-codes');
 
 function sha1Encode(data) {
     // To be implemented!
@@ -18,5 +18,5 @@ module.exports.digestAuth = (request, response, next) => {
         authentication[1] === sha1Encode('password');
 
     // si pas authentifié
-    isValid ? next() : response.sendStatus(HTTP_CODE_UNAUTHORIZED);
+    isValid ? next() : response.sendStatus(HttpStatus.HTTP_CODE_UNAUTHORIZED);
 };
